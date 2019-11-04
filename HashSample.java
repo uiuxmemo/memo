@@ -19,4 +19,13 @@ public class HashSample {
 		system.out.println("a");
 	}
 
+
+	public void good(){
+		system.out.println("гоюл");
+	}
+
+
+
+
+
 }
