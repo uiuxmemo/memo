@@ -16,4 +16,13 @@ public class HashSample {
 		System.out.println(set);
 	}
 
+
+	public void good(){
+		system.out.println("гоюл");
+	}
+
+
+
+
+
 }
