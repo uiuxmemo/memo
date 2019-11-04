@@ -15,9 +15,9 @@ public class HashSample {
 		set.remove("A");
 		System.out.println(set);
 	}
+	public void test() {
+		system.out.println("a");
+	}
 
 }
 
-ask;djalksdjalskdjalskd
-xzlkvcjzlxkcjzlkxc
-asdlkjadlkajsdlkasjdlkasdjlkasd
