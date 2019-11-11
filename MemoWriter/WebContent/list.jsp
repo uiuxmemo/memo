@@ -11,18 +11,55 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" 
+href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
 <style type="text/css">
 	*{margin:0; padding:0; box-sizing: border-box;}
-	.memo{display:block; border: 1px solid black; width: 100%; height: 150px; resize: none;}
-	.dtime{display:block; height:22px;}
-	.textContainer{display:block; position:relative; border: 1px solid red; width: 25%; float:left;  margin:10px; height:auto;}
-	.removeBtn{position:absolute; top:0px; right:0px;}
-	.editBtn{position:absolute; top:0px; right:30px;}
+	#head_link:link, #head_link:visited {
+		color: blue;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	#head_link:link:active, #head_link:visited:active {
+ 		color: blue;
+	}
+	#logoutBtn:link, #logoutBtn:visited {
+		color: red;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	#logoutBtn:link:active, #logoutBtn:visited:active {
+ 		color: red;
+	}
+	h1{font-size:50px;}
+	body{display:block;}
+	.memo{background-color: rgb(250, 250, 159); display:block; border: 2px solid black; width: 100%; height: 360px; resize: none; font-family: "Malgun Gothic"; font-size: 25px;}
+	.dtime{display:block; height:40px; font-family: "Malgun Gothic"; font-size: 25px;}
+	.textContainer{display:block; position:relative; border: 2px solid black; width: 400px; float:left;
+					background-color: rgb(250, 250, 159); margin:10px; height:400px; margin-top:30px;}
+	.removeBtn{position:absolute; top:0px; right:0px; height: 40px; width: 60px; font-size:20px;
+				background-color: orange; border:none; color:white; font-weight: bold; cursor:pointer;}
+	.editBtn{position:absolute; top:0px; right:60px; height: 40px; width: 60px; font-size:20px; 
+				background-color:green; border:none; color:white; font-weight: bold; cursor:pointer;}
 	.addMemo{display:none;}
+	#logoutBtn{text-decoration: none; position: absolute; top:0; right: 100px; font-size:15px;}
+	#id_show{position:absolute; top:0; right: 180px; font-size: 15px;}
+	.memoBtn{border: 1px solid skyblue; font-size:20px; font-weight: bold; color: white; background-color: skyblue; margin-left: 10px;
+	            width: 150px; height: 40px; border-radius: 5px; cursor: pointer;}
+	
+	#search{position: relative; width: 350px; margin-left: 10px; height:30px;}
+	#search_btn{position:absolute; top:0px; right:0px; height:33px; width:30px; font-size:20px; 
+				background-color: white; border: none;}
+	#search_btn:hover{background-color: skyblue; cursor:pointer;}
+	#search_input{positoin:absolute; top:0px; left:0px; width: 150px, height:30px; font-size:25px;}
+	#new_memo{margin-top:20px;}
+	#head{text-align: center; margin-bottom:40px; margin-top:30px;}
+	#contents{width: 95%; height:auto; margin-left:auto; margin-right:auto; padding-left:50px;}
 </style>
 </head>
 <body>
-메모장 목록
 
 <%
 	StringBuilder ps = new StringBuilder();
@@ -35,9 +72,6 @@
 
 	for(int i = list.length - 1; i >= 0 ; i--) {
 	    f = list[i].getName();
-	    out.println(id);
-	    out.println(f);
-	    out.print((String) session.getAttribute("test"));
 		Path path = Paths.get("C:","Users","YONSAI","Desktop","Coding","memoDB",id, f);
 		List<String> strs = Files.readAllLines(path);
 		int strsLength = strs.size() - 1;
@@ -59,19 +93,26 @@
 	}
 	
 %>
-<div>
-	<form action="search.jsp" method="post">
-		<input type="text" name="search" />
-		<button type="submit">검색</button>
-	</form>
+<p id="id_show">ID: <%=id %></p>
+<a id="logoutBtn" href="logout.jsp">로그아웃</a>
+<div id="head">
+	<h1><a id="head_link" href="list.jsp">블루하와이 메모장</a></h1>
 </div>
-<div>
-	<form action="save_memo.jsp" method="post">
-		<input class="addMemo" name="memo"><button type="submit">새 메모</button>
-	</form>
-</div>
-<div>
-	<%= ps %>
+<div id="contents">
+	<div id="search">
+		<form action="search.jsp" method="post">
+			<input id="search_input" type="text" name="search" />
+			<button id="search_btn" type="submit"><i class="fas fa-search"></i></button>
+		</form>
+	</div>
+	<div id="new_memo">
+		<form action="save_memo.jsp" method="post">
+			<input class="addMemo" name="memo"><button class="memoBtn" type="submit">새 메모</button>
+		</form>
+	</div>
+	<div id="text_contents">
+		<%= ps %>
+	</div>
 </div>
 </body>
 </html>

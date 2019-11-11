@@ -16,6 +16,7 @@
 </head>
 <body>
 <%
+
 String id = request.getParameter("id");
 String pw = request.getParameter("password");
 boolean IdNotExists = true;
@@ -30,6 +31,7 @@ String check = packet.raw();
 List<String> infos = Files.readAllLines(path);
 if(infos.contains(check)){
 	session.setAttribute("id", id);
+	session.removeAttribute("login_error");
 	response.sendRedirect("list.jsp");
 }
 for(String info : infos){
@@ -41,11 +43,14 @@ for(String info : infos){
 	}
 }
 if(IdNotExists){
-	out.print("존재하지 않는 아이디입니다");
+	session.setAttribute("login_error", "존재하지 않는 아이디입니다");
 }else if(!IdNotExists){
 	if(PwNotExists){
-		out.print("비밀번호가 틀립니다");
+		session.setAttribute("login_error", "비밀번호가 틀립니다");
 	}
+}
+if(session.getAttribute("login_error") != null){
+	response.sendRedirect("login_test.jsp");
 }
 %>
 </body>
