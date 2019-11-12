@@ -43,7 +43,7 @@
 					String temp = strs.get(j).replaceAll(strs.get(j).substring(12), replace);
 					strs.set(j, temp);
 					Files.write(path, strs);
-					response.sendRedirect("list.jsp");
+					response.sendRedirect("list");
 					break;
 				}
 			}catch(Exception e){

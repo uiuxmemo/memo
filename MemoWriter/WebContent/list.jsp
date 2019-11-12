@@ -10,34 +10,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>목록</title>
 <link rel="stylesheet" 
 href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
-<style type="text/css">
-	*{margin:0; padding:0; box-sizing: border-box;}
+<link rel="stylesheet" type="text/css" href="ListSearch.css">
+<style>
+	*{margin:0; padding:0; box-sizing: border-box; border: none; }
+	#head_link{font-family: 'Jeju Hallasan', cursive; 50px}
 	#head_link:link, #head_link:visited {
 		color: blue;
 		text-decoration: none;
 		cursor: pointer;
 	}
-
+	
 	#head_link:link:active, #head_link:visited:active {
- 		color: blue;
+			color: blue;
 	}
 	#logoutBtn:link, #logoutBtn:visited {
 		color: red;
 		text-decoration: none;
 		cursor: pointer;
 	}
-
+	
 	#logoutBtn:link:active, #logoutBtn:visited:active {
- 		color: red;
+			color: red;
 	}
-	h1{font-size:50px;}
+	h1{font-size: 60px;}
 	body{display:block;}
-	.memo{background-color: rgb(250, 250, 159); display:block; border: 2px solid black; width: 100%; height: 360px; resize: none; font-family: "Malgun Gothic"; font-size: 25px;}
-	.dtime{display:block; height:40px; font-family: "Malgun Gothic"; font-size: 25px;}
-	.textContainer{display:block; position:relative; border: 2px solid black; width: 400px; float:left;
+	.memo{padding-left:5px; background-color: rgb(250, 250, 159); display:block; border-top:1px solid black; border-bottom:1px solid black ; width: 100%; height: 359px; resize: none; font-family: "Malgun Gothic"; font-size: 25px;}
+	.dtime{padding-left:5px; display:block; height:40px; font-family: "Malgun Gothic"; font-size: 25px;}
+	.textContainer{display:block; position:relative; border: 1px solid black; width: 400px; float:left;
 					background-color: rgb(250, 250, 159); margin:10px; height:400px; margin-top:30px;}
 	.removeBtn{position:absolute; top:0px; right:0px; height: 40px; width: 60px; font-size:20px;
 				background-color: orange; border:none; color:white; font-weight: bold; cursor:pointer;}
@@ -50,13 +52,14 @@ href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
 	            width: 150px; height: 40px; border-radius: 5px; cursor: pointer;}
 	
 	#search{position: relative; width: 350px; margin-left: 10px; height:30px;}
-	#search_btn{position:absolute; top:0px; right:0px; height:33px; width:30px; font-size:20px; 
+	#search_btn{position:absolute; top:1px; right:1px; height:32px; width:34px; font-size:20px; 
 				background-color: white; border: none;}
 	#search_btn:hover{background-color: skyblue; cursor:pointer;}
-	#search_input{positoin:absolute; top:0px; left:0px; width: 150px, height:30px; font-size:25px;}
-	#new_memo{margin-top:20px;}
-	#head{text-align: center; margin-bottom:40px; margin-top:30px;}
-	#contents{width: 95%; height:auto; margin-left:auto; margin-right:auto; padding-left:50px;}
+	#search_input{padding-left:5px; positoin:absolute; top:0px; left:0px; width: 150px, height:30px; font-size:25px; padding-bottom: 3px;}
+	#search_form{display:block; border:1px solid black;}
+	#new_memo{margin-top:20px; width:152px;}
+	#head{text-align: center; margin-bottom:40px; margin-top:30px; }
+	#contents{width: 95%; height:auto; margin-left:auto; margin-right:auto; padding-left: 100px;}
 </style>
 </head>
 <body>
@@ -96,12 +99,13 @@ href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
 <p id="id_show">ID: <%=id %></p>
 <a id="logoutBtn" href="logout.jsp">로그아웃</a>
 <div id="head">
-	<h1><a id="head_link" href="list.jsp">블루하와이 메모장</a></h1>
+	<h1><a id="head_link" href="list"><span style ="color:springgreen; font-weight: bold ;">블루</span><span style = "color:greenyellow">하와이</span>
+    <span style="color:blue"> 메모장</span></a></h1>
 </div>
 <div id="contents">
 	<div id="search">
-		<form action="search.jsp" method="post">
-			<input id="search_input" type="text" name="search" />
+		<form id="search_form" action="search" method="post">
+			<input id="search_input" type="text" name="search" placeholder="메모장 검색"/>
 			<button id="search_btn" type="submit"><i class="fas fa-search"></i></button>
 		</form>
 	</div>

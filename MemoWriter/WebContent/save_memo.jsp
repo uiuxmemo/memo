@@ -20,7 +20,7 @@ String id = (String) session.getAttribute("id");
 String memo = request.getParameter("memo");
 
 Packet.inputMemo(id, memo);
-response.sendRedirect("list.jsp");
+response.sendRedirect("list");
 %>
 
 </body>

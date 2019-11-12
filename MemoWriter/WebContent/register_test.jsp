@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 </head>
 <style>
 	header { width: 600px; margin-left: auto; margin-right: auto; padding: 46px 0 20px 0;
@@ -14,14 +14,14 @@
 	#container label{display:block; font-size: 20px; text-align:left; margin-bottom:5px; font-weight: bold; color:white;}
 	#container{width:600px; margin:auto; text-align: center; margin-bottom: 100px;}
 	#pwd_label, #pwd_confirm{margin-top:20px;}
-	input{width:600px; height:40px; font-size:25px;}
+	input{padding-left:5px; width:600px; height:40px; font-size:25px;}
 	#login_btn, #register_btn{display:block; width:600px; height:50px; background-color:blue; color:white; font-weight:bold;
 		border:none; text-decoration: none; font-size:25px; margin-top:40px; cursor:pointer;}
 	#login_link{text-decoration:none;}
 </style>
 <body>
 <header>
-    <a id="login_link" href="login_test.jsp"><span style ="color:springgreen;font-weight: bold ;">블루</span><span style = "color:greenyellow">하와이</span>
+    <a id="login_link" href="login_page"><span style ="color:springgreen;font-weight: bold ;">블루</span><span style = "color:greenyellow">하와이</span>
     <br><span style="color:blue">메모장</span></a>
 </header>
 <div id="container">

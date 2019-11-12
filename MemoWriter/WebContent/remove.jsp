@@ -36,7 +36,7 @@
 				if(strs.get(j).contains(ps)){
 					strs.remove(j);
 					Files.write(path, strs);
-					response.sendRedirect("list.jsp");
+					response.sendRedirect("list");
 					break;
 				}
 			}catch(Exception e){

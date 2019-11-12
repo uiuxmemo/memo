@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>새 매모</title>
 </head>
 <body>
 <form action="save_memo.jsp" method="post" accept-charset="utf-8">

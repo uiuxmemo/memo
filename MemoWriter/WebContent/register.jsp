@@ -57,7 +57,7 @@ if(idOrPwLong && IdNotExists && IdIsLetterOrDigit){
 			Packet.inputIdAndPw(id, pw);
 			session.removeAttribute("register_error");
 			session.setAttribute("id", id);
-			response.sendRedirect("list.jsp");			
+			response.sendRedirect("list");			
 		}else if(id.length() > 10){
 			session.setAttribute("register_error", "아이디를 10자 이내로 써주세요");
 		}else if(pw.length() > 15){
@@ -70,7 +70,7 @@ if(idOrPwLong && IdNotExists && IdIsLetterOrDigit){
 	session.setAttribute("register_error", "이미 존재하는 아이디입니다.");
 }
 if((String)session.getAttribute("register_error") != null){
-	response.sendRedirect("register_test.jsp");
+	response.sendRedirect("register_page");
 }
 
 

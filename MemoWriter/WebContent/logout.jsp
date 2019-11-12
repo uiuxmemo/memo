@@ -9,7 +9,7 @@
 <body>
 <%
 	session.removeAttribute("id");
-	response.sendRedirect("login_test.jsp");
+	response.sendRedirect("login_page");
 %>
 </body>
 </html>

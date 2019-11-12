@@ -45,7 +45,7 @@ if(idOrPwLong){
 		if(info.substring(0,10).trim().equals(id) && info.substring(10).trim().equals(pw)){
 			session.setAttribute("id", id);
 			session.removeAttribute("login_error");
-			response.sendRedirect("list.jsp");
+			response.sendRedirect("list");
 			break;
 		}
 	}
@@ -63,7 +63,7 @@ if(idOrPwLong && IdNotExists){
 	}
 }
 if((String)session.getAttribute("login_error") != null){
-	response.sendRedirect("login_test.jsp");
+	response.sendRedirect("login_page");
 }
 %>
 </body>
