@@ -55,7 +55,7 @@ public class Packet {
 		Path path = Paths.get("C:","Users","YONSAI","Desktop","Coding","memoDB", "registerInfo.txt");
 		Path idFolder = Paths.get("C:","Users","YONSAI","Desktop","Coding","memoDB", id);
 		if(!Files.exists(idFolder)) {
-			Files.createDirectory(idFolder);	
+			Files.createDirectories(idFolder);
 		}
 		saveIdAndPassword(path, id, pw);
 	}
@@ -63,7 +63,7 @@ public class Packet {
 	public static void inputMemo(String id, String memo) throws IOException {
 		Path path = Paths.get("C:","Users","YONSAI","Desktop","Coding","memoDB", id);
 		if(!Files.exists(path)) {
-			Files.createDirectory(path);	
+			Files.createDirectories(path);
 		}
 		Calendar rightNow = Calendar.getInstance();
 		int y = rightNow.get(Calendar.YEAR) % 100;

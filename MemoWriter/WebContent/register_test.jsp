@@ -12,7 +12,7 @@
 	*{margin:0; padding:0; box-sizing: border-box;}
 	body {background : skyblue;  }
 	#container label{display:block; font-size: 20px; text-align:left; margin-bottom:5px; font-weight: bold; color:white;}
-	#container{width:600px; margin:auto; text-align: center;}
+	#container{width:600px; margin:auto; text-align: center; margin-bottom: 100px;}
 	#pwd_label, #pwd_confirm{margin-top:20px;}
 	input{width:600px; height:40px; font-size:25px;}
 	#login_btn, #register_btn{display:block; width:600px; height:50px; background-color:blue; color:white; font-weight:bold;
@@ -21,21 +21,22 @@
 </style>
 <body>
 <header>
-    <a id="login_link" href="login_test.jsp"><span style ="color:springgreen;font-weight: bold ;">블루</span> <span style = "color:greenyellow">하와이</span></a>
+    <a id="login_link" href="login_test.jsp"><span style ="color:springgreen;font-weight: bold ;">블루</span><span style = "color:greenyellow">하와이</span>
+    <br><span style="color:blue">메모장</span></a>
 </header>
 <div id="container">
 	<% 
 		session.removeAttribute("login_error");
 		if(session.getAttribute("register_error") == null){
 			session.setAttribute("register_error", "");
-	}
+		}
 	%>
 	<p><%= session.getAttribute("register_error") %></p>
 	<form action="register.jsp" method="post">
 		<label for="id">아이디</label>
-		<input type="text" name="id" /><br>
+		<input type="text" name="id" placeholder="5 ~ 10자, 영문+숫자 조합"/><br>
 		<label id="pwd_label" for="password">비밀번호</label>
-		<input type="password" name="password" /><br>
+		<input type="password" name="password" placeholder="5 ~ 15자"/><br>
 		<label id="pwd_confirm" for="confirm">비밀번호 확인</label>
 		<input type="password" name="confirm" /><br>
 		<button id="register_btn" type="submit">회원가입</button>

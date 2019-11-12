@@ -11,7 +11,7 @@
 	*{margin:0; padding:0; box-sizing: border-box;}
 	body {background : skyblue;  }
 	#container label{display:block; font-size: 20px; text-align:left; margin-bottom:5px; font-weight: bold; color:white;}
-	#container{width:600px; margin:auto; text-align: center;}
+	#container{width:600px; margin:auto; text-align: center; margin-bottom: 100px;}
 	#pwd_label{margin-top:20px;}
 	input{width:600px; height:40px; font-size:25px;}
 	#login_btn, #register_btn{display:block; width:600px; height:50px; background-color:blue; color:white; font-weight:bold;
@@ -21,7 +21,8 @@
 </head>
 <body>
 <header>
-    <a id="login_link" href="login_test.jsp"><span style ="color:springgreen;font-weight: bold ;">블루</span> <span style = "color:greenyellow">하와이</span></a>
+    <a id="login_link" href="login_test.jsp"><span style ="color:springgreen;font-weight: bold ;">블루</span><span style = "color:greenyellow">하와이</span>
+    <br><span style="color:blue">메모장</span></a>
 </header>
 <div id="container">
 	<%
@@ -33,9 +34,9 @@
 	<p><%= session.getAttribute("login_error") %></p>
 	<form action="login.jsp" method="post">
 		<label for="id">아이디</label>
-		<input type="text" name="id" /><br>
+		<input type="text" name="id" placeholder="5 ~ 10자, 영문+숫자 조합" /><br>
 		<label id="pwd_label" for="password">비밀번호</label>
-		<input type="password" name="password" /><br>
+		<input type="password" name="password" placeholder="5 ~ 15자"/><br>
 		<button id="login_btn" type="submit">로그인</button>
 	</form>
 	<a id="register_btn" href="register_test.jsp">회원가입</a>

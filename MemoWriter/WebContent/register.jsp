@@ -1,3 +1,4 @@
+<%@page import="java.nio.file.StandardOpenOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="memo.Packet" %>
@@ -17,14 +18,28 @@ String id = request.getParameter("id");
 String pw = request.getParameter("password");
 String pw_for_confirm = request.getParameter("confirm");
 String error = "";
+boolean idOrPwLong = true;
 boolean IdNotExists = true;
 boolean IdIsLetterOrDigit = true;
+if(id.length() < 5 || pw.length() < 5){
+	session.setAttribute("register_error", "아이디와 비밀번호를 5자 이상으로 입력하세요.");
+	idOrPwLong = false;
+}
+Path dir = Paths.get("C:","Users","YONSAI","Desktop","Coding","memoDB");
+if(Files.notExists(dir)) {
+	Files.createDirectories(dir);
+}
 Path path = Paths.get("C:","Users","YONSAI","Desktop","Coding","memoDB","registerInfo.txt");
+if(Files.notExists(path)){
+	Files.write(path, ("testtesttesttesttesttest"+System.lineSeparator()).getBytes(), StandardOpenOption.CREATE);
+}
 List<String> infos = Files.readAllLines(path);
-for(String info : infos){
-	if(info.substring(0,10).trim().equals(id)){
-		IdNotExists = false;
-		break;
+if(idOrPwLong && infos.size() >= 2){
+	for(String info : infos){
+		if(info.substring(0,10).trim().equals(id)){
+			IdNotExists = false;
+			break;
+		}
 	}
 }
 
@@ -34,12 +49,9 @@ for(int i = 0; i < id.length(); i++){
 	}
 }
 if(IdIsLetterOrDigit == false){
-	session.setAttribute("error", "아이디는 영문과 숫자만 가능합니다.");
+	session.setAttribute("register_error", "아이디는 영문과 숫자만 가능합니다.");
 }
-if(id == null || pw == null){
-	session.setAttribute("error", "아이디나 비밀번호를 입력하세요.");
-}
-if(IdNotExists && IdIsLetterOrDigit){
+if(idOrPwLong && IdNotExists && IdIsLetterOrDigit){
 	if(pw.equals(pw_for_confirm)){
 		if(id.length() <= 10 && pw.length() <= 15){
 			Packet.inputIdAndPw(id, pw);
@@ -57,7 +69,7 @@ if(IdNotExists && IdIsLetterOrDigit){
 }else if(!IdNotExists && IdIsLetterOrDigit){
 	session.setAttribute("register_error", "이미 존재하는 아이디입니다.");
 }
-if(session.getAttribute("register_error") != null){
+if((String)session.getAttribute("register_error") != null){
 	response.sendRedirect("register_test.jsp");
 }
 
