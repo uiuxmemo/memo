@@ -80,7 +80,7 @@ href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
 		int strsLength = strs.size() - 1;
 		for(int j = strsLength; j >= 0; j--){
 			try{
-				if(strs.get(j).contains(search)){
+				if(strs.get(j).substring(12).contains(search)){
 					String date = f.substring(0, 8) + " ";
 					String time = strs.get(j).substring(0, 5);
 					String text = strs.get(j).substring(12);
